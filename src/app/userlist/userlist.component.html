@@ -1,0 +1,76 @@
+<p class="user-list">user-list works!</p>
+<button class="btn btn-primary" (click)="logout()">Logout</button>
+<button class="btn btn-primary" (click)="goToAddUser()">Add User</button>
+
+<!-- Add the search input field -->
+<!-- <div class="search-container">
+  <input type="search" [(ngModel)]="searchText" (keyup)="applyFilter()" class="form-control" placeholder="Search">
+</div> -->
+
+<div class="container">
+  <mat-form-field>
+    <input matInput [(ngModel)]="searchText" (keyup)="applyFilter()" placeholder="Filter">
+
+
+  </mat-form-field>
+  
+  <div class="mat-elevation-z8">
+    <table mat-table [dataSource]="filteredData" matSort #sort="matSort" matSortActive="id" matSortDisableClear>
+  
+      <!-- ID Column -->
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Id </th>
+        <td mat-cell *matCellDef="let data"> {{ data.id }} </td>
+      </ng-container>
+  
+      <!-- Name Column -->
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+        <td mat-cell *matCellDef="let data"> {{ data.name }} </td>
+      </ng-container>
+  
+      <!-- Email Column -->
+      <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Email </th>
+        <td mat-cell *matCellDef="let data"> {{ data.email }} </td>
+      </ng-container>
+  
+      <!-- Gender Column -->
+      <ng-container matColumnDef="gender">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Gender </th>
+        <td mat-cell *matCellDef="let data"> {{ data.gender }} </td>
+      </ng-container>
+  
+      <!-- Status Column -->
+      <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
+        <td mat-cell *matCellDef="let data"> {{ data.status }} </td>
+      </ng-container>
+  
+      <!-- Activity Column -->
+      <ng-container matColumnDef="activity">
+        <th mat-header-cell *matHeaderCellDef> Activity </th>
+        <td mat-cell *matCellDef="let data">
+          <button mat-icon-button color="warn" (click)="deleteUser(data.id)">
+            <mat-icon>delete</mat-icon>
+          </button>
+          <button mat-icon-button color="primary" (click)="editUser(data.id)">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button color="primary" (click)="openPopup(data)">
+            <mat-icon>visibility</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let data; columns: displayedColumns;"></tr>
+    </table>
+
+    <mat-paginator [length]="totalUsers" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions" (page)="applyPagination($event)"></mat-paginator>
+
+
+  </div>
+  
+  
+</div>

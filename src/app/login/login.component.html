@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <!-- Login area -->
+      <div class="login-area">
+        <h2>Login</h2>
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="needs-validation">
+          <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" id="name" formControlName="name" class="form-control" required>
+            <div *ngIf="loginForm.get('name')?.invalid && loginForm.get('name')?.touched" class="invalid-feedback">
+              Name is required.
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" formControlName="email" class="form-control" required>
+            <div *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched" class="invalid-feedback">
+              Email is required and must be valid.
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+        <p>Don't have an account? <a href="#">Sign up</a></p>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <!-- Image area -->
+      <div class="image-area">
+        <!-- Add your image here -->
+      </div>
+    </div>
+  </div>
+</div>
