@@ -51,9 +51,16 @@ export class AuthService {
   
   // Deletes a user
   deleteUser(userId: number): Observable<any> {
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${this.accessToken}`); // Set authorization header
-    const url = `${this.apiUrl}/${userId}`; // URL for deleting a user
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${this.accessToken}`);
+    const url = `${this.apiUrl}/${userId}`;// URL for deleting a user
   
     return this.http.delete(url, { headers }); // Make the HTTP DELETE request to delete the user
   }
+
+  // deleteUser(userId: number): Observable<any> {
+  //   const headers = new HttpHeaders().set('Authorization', `Bearer ${this.accessToken}`); // Set authorization header
+  //   const url = `${this.apiUrl}/${userId}`;  
+  
+  //   return this.http.delete(url, { headers }); 
+  // }
 }
