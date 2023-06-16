@@ -61,15 +61,18 @@
       <ng-container matColumnDef="activity">
         <th mat-header-cell *matHeaderCellDef>Activity</th>
         <td mat-cell *matCellDef="let data">
-          <button mat-icon-button color="warn" (click)="deleteUser(data.id)">
-            <mat-icon>delete</mat-icon>
-          </button>
-          <button mat-icon-button color="primary" (click)="editUser(data.id)">
-            <mat-icon>edit</mat-icon>
-          </button>
-          <button mat-icon-button color="primary" (click)="openPopup(data)">
-            <mat-icon>visibility</mat-icon>
-          </button>
+          <div class="d-flex justify-content-evenly">
+            <button mat-icon-button color="warn" class="bg-danger" (click)="deleteUser(data.id)">
+              <mat-icon>delete</mat-icon>
+            </button>
+            <button mat-icon-button color="primary" class="bg-primary" (click)="editUser(data.id)">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-icon-button color="primary" class="bg-warning" (click)="openPopup(data)">
+              <mat-icon>visibility</mat-icon>
+            </button>
+          </div>
+          
         </td>
       </ng-container>
 
