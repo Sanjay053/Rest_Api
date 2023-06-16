@@ -19,6 +19,8 @@ import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { UpdateComponent } from './update/update.component';
 import { UserDetailsComponent } from './user-details/user-details.component'
+import {MatSelectModule} from '@angular/material/select';
+import {MatButtonModule} from '@angular/material/button';
 
 
 
@@ -45,7 +47,9 @@ import { UserDetailsComponent } from './user-details/user-details.component'
     MatFormFieldModule,
     MatInputModule,
     MatTableModule,
-    MatSortModule
+    MatSortModule,
+    MatSelectModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

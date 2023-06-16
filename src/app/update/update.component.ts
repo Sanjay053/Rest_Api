@@ -12,7 +12,6 @@ export class UpdateComponent implements OnInit {
   updateForm: FormGroup;
   updatedData: any = {}; 
   userData: any;
-  onlyId: any;
 
   constructor(
     private authService: AuthService,
@@ -34,8 +33,6 @@ export class UpdateComponent implements OnInit {
     this.authService.getUser(userId).subscribe(
       (response: any) => {
         this.userData = response.data;
-        this.onlyId = this.userData.id
-        // console.log(this.onlyId)
       },
       (error: any) => {
         console.log('Error fetching user data:', error);
@@ -44,8 +41,6 @@ export class UpdateComponent implements OnInit {
   }
 
   updateUser() {
-    console.log(this.updateForm.value)
-
     const dataWithId = { ...this.updatedData };
   // delete dataWithoutId.id;
   const idValue = dataWithId.id;

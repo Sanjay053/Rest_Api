@@ -1,4 +1,19 @@
-<h2>User Details</h2>
-<p><strong>Name:</strong> {{ userData.name }}</p>
-<p><strong>Email:</strong> {{ userData.email }}</p>
-<p><strong>Status:</strong> {{ userData.status }}</p>
+<div class="container m-3">
+    <h2>User Details</h2>
+<mat-form-field>
+    <mat-label>Name</mat-label>
+    <input matInput value="{{userData.name}}" [disabled]="true">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Name</mat-label>
+    <input matInput value="{{userData.email}}" [disabled]="true">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Name</mat-label>
+    <input matInput value="{{userData.gender}}" [disabled]="true">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Name</mat-label>
+    <input matInput value="{{userData.status}}" [disabled]="true">
+  </mat-form-field>    
+</div>
