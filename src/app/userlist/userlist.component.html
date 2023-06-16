@@ -1,55 +1,65 @@
-<p class="user-list">user-list works!</p>
-<button class="btn btn-primary" (click)="logout()">Logout</button>
-<button class="btn btn-primary" (click)="goToAddUser()">Add User</button>
-
-<!-- Add the search input field -->
-<!-- <div class="search-container">
-  <input type="search" [(ngModel)]="searchText" (keyup)="applyFilter()" class="form-control" placeholder="Search">
-</div> -->
+<h1 class="user-list my-2">User List</h1>
+<div class="d-flex justify-content-between mt-3">
+  <div class="">
+    <button class="btn btn-primary" (click)="goToAddUser()">Add User</button>
+  </div>
+  <div class="">
+    <button class="btn btn-primary" (click)="logout()">Logout</button>  
+  </div>
+</div>
 
 <div class="container">
   <mat-form-field>
-    <input matInput [(ngModel)]="searchText" (keyup)="applyFilter()" placeholder="Filter">
-
-
+    <input
+      matInput
+      [(ngModel)]="searchText"
+      (keyup)="applyFilter()"
+      placeholder="Filter"
+    />
   </mat-form-field>
-  
+
   <div class="mat-elevation-z8">
-    <table mat-table [dataSource]="filteredData" matSort #sort="matSort" matSortActive="id" matSortDisableClear>
-  
+    <table
+      mat-table
+      [dataSource]="filteredData"
+      matSort
+      #sort="matSort"
+      matSortActive="id"
+      matSortDisableClear
+    >
       <!-- ID Column -->
       <ng-container matColumnDef="id">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Id </th>
-        <td mat-cell *matCellDef="let data"> {{ data.id }} </td>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Id</th>
+        <td mat-cell *matCellDef="let data">{{ data.id }}</td>
       </ng-container>
-  
+
       <!-- Name Column -->
       <ng-container matColumnDef="name">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
-        <td mat-cell *matCellDef="let data"> {{ data.name }} </td>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
+        <td mat-cell *matCellDef="let data">{{ data.name }}</td>
       </ng-container>
-  
+
       <!-- Email Column -->
       <ng-container matColumnDef="email">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Email </th>
-        <td mat-cell *matCellDef="let data"> {{ data.email }} </td>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Email</th>
+        <td mat-cell *matCellDef="let data">{{ data.email }}</td>
       </ng-container>
-  
+
       <!-- Gender Column -->
       <ng-container matColumnDef="gender">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Gender </th>
-        <td mat-cell *matCellDef="let data"> {{ data.gender }} </td>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Gender</th>
+        <td mat-cell *matCellDef="let data">{{ data.gender }}</td>
       </ng-container>
-  
+
       <!-- Status Column -->
       <ng-container matColumnDef="status">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
-        <td mat-cell *matCellDef="let data"> {{ data.status }} </td>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Status</th>
+        <td mat-cell *matCellDef="let data">{{ data.status }}</td>
       </ng-container>
-  
+
       <!-- Activity Column -->
       <ng-container matColumnDef="activity">
-        <th mat-header-cell *matHeaderCellDef> Activity </th>
+        <th mat-header-cell *matHeaderCellDef>Activity</th>
         <td mat-cell *matCellDef="let data">
           <button mat-icon-button color="warn" (click)="deleteUser(data.id)">
             <mat-icon>delete</mat-icon>
@@ -62,15 +72,14 @@
           </button>
         </td>
       </ng-container>
-  
+
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let data; columns: displayedColumns;"></tr>
+      <tr mat-row *matRowDef="let data; columns: displayedColumns"></tr>
     </table>
 
-    <mat-paginator [length]="totalUsers" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions" (page)="applyPagination($event)"></mat-paginator>
-
+    <mat-paginator [length]="perPage" [pageSize]="pageSize" [pageSizeOptions]="[5, 10, 25, 100]"
+            aria-label="Select page of periodic elements"(page)="applyPagination($event)" showFirstLastButtons>
+        </mat-paginator>
 
   </div>
-  
-  
 </div>
