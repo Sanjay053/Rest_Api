@@ -58,7 +58,6 @@ export class UserlistComponent implements OnInit {
         console.log(data);
         this.filteredData = data; // Store the fetched data
         this.dataSource = new MatTableDataSource<any>(data); // Update the data source
-        this.totalUsers = data.meta.pagination.total; // Update the total number of users
         console.log(this.filteredData);
       },
       (error) => {
