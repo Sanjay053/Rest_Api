@@ -11,6 +11,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class UpdateComponent implements OnInit {
   updateForm: FormGroup;
   updatedData: any = {}; 
+  view:any ={};
   userData: any;
 
   constructor(
@@ -20,19 +21,24 @@ export class UpdateComponent implements OnInit {
     private formBuilder: FormBuilder
   ) {
     this.updateForm = this.formBuilder.group({
-      name: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-      gender: ['', Validators.required],
-      status: ['', Validators.required]
+      name: [''],
+      email: ['', Validators.email],
+      gender: [''],
+      status: ['']
     });
     this.updatedData = { ...data }; // Copy the data to updatedData
   }
 
   ngOnInit() {
     const userId = this.data.userId;
-    this.authService.getUser(userId).subscribe(
+    const dataWithId = { ...this.updatedData };
+    const idValue = dataWithId.id;
+    this.authService.getUser(idValue).subscribe(
       (response: any) => {
-        this.userData = response.data;
+        this.view = response
+        this.userData = response.id;
+        console.log(this.view);
+        console.log("works ",this.userData)
       },
       (error: any) => {
         console.log('Error fetching user data:', error);

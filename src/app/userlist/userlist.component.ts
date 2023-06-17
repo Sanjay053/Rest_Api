@@ -120,7 +120,7 @@ export class UserlistComponent implements OnInit {
   // Opens a dialog to display user details
   openPopup(userData: any) {
     const dialogRef = this.dialog.open(UserDetailsComponent, {
-      width: '500px',
+      width: '400px',
       data: userData
     });
 

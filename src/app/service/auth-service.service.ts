@@ -19,13 +19,11 @@ export class AuthService {
 
   // Retrieves a list of users
   userlist(page: number, perPage: number): Observable<any> {
-    const url = `${this.apiUrl}?page=${page}&per_page=${perPage}&`; // URL with query parameters for pagination
-    
+    const url = `${this.apiUrl}?page=${page}&per_page=${perPage}`; // URL with query parameters for pagination
     // Set the query parameters
     let params = new HttpParams()
       .set('page', page.toString())
-      .set('per_page', perPage.toString());
-  
+      .set('per_page', perPage.toString());  
     // Make the HTTP GET request to retrieve the user list
     return this.http.get(url, { params });
   }
@@ -44,8 +42,8 @@ export class AuthService {
   }
 
   // Retrieves a specific user
-  getUser(userId: number): Observable<any> {
-    const url = `${this.apiUrl}/${userId}`; // URL for getting user details
+  getUser(id: number): Observable<any> {
+    const url = `${this.apiUrl}/${id}`; // URL for getting user details
     return this.http.get(url); // Make the HTTP GET request to retrieve the user
   }
   
